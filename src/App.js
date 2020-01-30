@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Provider } from './context'
 import Header from './components/layout/Header'
 import Index from './pages/Index'
 import About from './pages/About'
@@ -7,11 +8,12 @@ import About from './pages/About'
 class App extends Component {
   render() {
     return (
-      <Router>
-        <Header />
-        <Route exact path="/" component={Index} />
-        <Route exact path="/about" component={About} />
-        {/* <Route
+      <Provider>
+        <Router>
+          <Header />
+          <Route exact path="/" component={Index} />
+          <Route exact path="/about" component={About} />
+          {/* <Route
           path="/view-post/:id"
           render={props => (
             <React.Fragment>
@@ -19,7 +21,8 @@ class App extends Component {
             </React.Fragment>
           )}
         /> */}
-      </Router>
+        </Router>
+      </Provider>
     )
   }
 }

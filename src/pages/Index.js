@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
+import { Consumer } from '../context'
 
 class Index extends Component {
   render() {
-    return <div>Index Page</div>
+    return (
+      <Consumer>
+        {value => {
+          return value.contacts.map(contact => contact.name)
+        }}
+      </Consumer>
+    )
   }
 }
 

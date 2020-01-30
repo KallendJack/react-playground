@@ -1,13 +1,25 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Header from './components/layout/Header'
+import Index from './pages/Index'
+import About from './pages/About'
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <h1 className="text-xl tracking-widest md:text-blue-400">
-          Hello World!
-        </h1>
-      </div>
+      <Router>
+        <Header />
+        <Route exact path="/" component={Index} />
+        <Route exact path="/about" component={About} />
+        {/* <Route
+          path="/view-post/:id"
+          render={props => (
+            <React.Fragment>
+              <ViewPost id={props.match.params.id} />
+            </React.Fragment>
+          )}
+        /> */}
+      </Router>
     )
   }
 }

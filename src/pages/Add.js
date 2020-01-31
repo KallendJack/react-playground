@@ -21,6 +21,7 @@ class Add extends Component {
     }
 
     dispatch({ type: 'ADD_POST', payload: newPost })
+    this.props.history.push('/')
   }
 
   render() {
@@ -28,9 +29,7 @@ class Add extends Component {
 
     return (
       <Consumer>
-        {value => {
-          const { dispatch } = value
-
+        {({ dispatch }) => {
           return (
             <form
               onSubmit={this.onSubmit.bind(this, dispatch)}

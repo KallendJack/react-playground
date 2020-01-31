@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Consumer } from '../context'
+import { Link } from 'react-router-dom'
 
 class Index extends Component {
   onDeleteClick = (id, dispatch) => {
@@ -23,9 +24,15 @@ class Index extends Component {
                   <p className="font-bold text-lg mb-1">{title}</p>
                   <p className="mb-2">{body}</p>
                   <div className="inline-flex">
-                    <button className="bg-blue-300 hover:bg-blue-400 text-blue-800 font-bold py-2 px-4 rounded-l">
+                    <Link
+                      to={`/view/${id}`}
+                      id={id}
+                      title={title}
+                      body={body}
+                      className="bg-blue-300 hover:bg-blue-400 text-blue-800 font-bold py-2 px-4 rounded-l"
+                    >
                       View
-                    </button>
+                    </Link>
                     <button
                       onClick={this.onDeleteClick.bind(this, id, dispatch)}
                       className="ml-3 bg-red-300 hover:bg-red-400 text-red-800 font-bold py-2 px-4 rounded-r"

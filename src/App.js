@@ -4,6 +4,7 @@ import { Provider } from './context'
 import Header from './components/layout/Header'
 import Index from './pages/Index'
 import Add from './pages/Add'
+import View from './pages/View'
 
 class App extends Component {
   render() {
@@ -13,14 +14,7 @@ class App extends Component {
           <Header />
           <Route exact path="/" component={Index} />
           <Route exact path="/add" component={Add} />
-          {/* <Route
-          path="/view-post/:id"
-          render={props => (
-            <React.Fragment>
-              <ViewPost id={props.match.params.id} />
-            </React.Fragment>
-          )}
-        /> */}
+          <Route exact path="/view/:id" component={View} />
         </Router>
       </Provider>
     )

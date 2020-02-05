@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 import { Consumer } from '../context'
 
 class View extends Component {
+  onDeleteClick = (id, dispatch) => {
+    dispatch({ type: 'DELETE_POST', payload: id })
+    this.props.history.push('/')
+  }
+
   render() {
     return (
       <Consumer>
-        {({ posts }) => {
+        {({ posts, dispatch }) => {
           const post = posts.filter(
             post => post.id === parseInt(this.props.match.params.id)
           )
@@ -18,6 +23,21 @@ class View extends Component {
                     <div className="block group p-4">
                       <p className="font-bold text-lg mb-1">{post[0].title}</p>
                       <p className="mb-2">{post[0].body}</p>
+                      <div className="inline-flex">
+                        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+                          Edit
+                        </button>
+                        <button
+                          onClick={this.onDeleteClick.bind(
+                            this,
+                            post[0].id,
+                            dispatch
+                          )}
+                          className="ml-3 bg-red-300 hover:bg-red-400 text-red-800 font-bold py-2 px-4 rounded-r"
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

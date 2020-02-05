@@ -3,17 +3,10 @@ import { Consumer } from '../context'
 import { Link } from 'react-router-dom'
 
 class Index extends Component {
-  onDeleteClick = (id, dispatch) => {
-    dispatch({ type: 'DELETE_POST', payload: id })
-  }
-
   render() {
     return (
       <Consumer>
-        {value => {
-          const { dispatch } = value
-          const { posts } = value
-
+        {({ posts }) => {
           return posts.map(({ id, title, body }) => (
             <div
               key={id}
@@ -33,12 +26,6 @@ class Index extends Component {
                     >
                       View
                     </Link>
-                    <button
-                      onClick={this.onDeleteClick.bind(this, id, dispatch)}
-                      className="ml-3 bg-red-300 hover:bg-red-400 text-red-800 font-bold py-2 px-4 rounded-r"
-                    >
-                      Delete
-                    </button>
                   </div>
                 </div>
               </div>

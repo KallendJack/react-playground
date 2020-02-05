@@ -7,12 +7,12 @@ class View extends Component {
       <Consumer>
         {({ posts }) => {
           const post = posts.filter(
-            post => post.id == this.props.match.params.id
+            post => post.id === parseInt(this.props.match.params.id)
           )
 
           return (
             <div>
-              {post.length > 0 && (
+              {post.length && (
                 <div className="flex items-center justify-center w-full py-8">
                   <div className="overflow-hidden rounded max-w-xl w-full shadow-lg leading-normal">
                     <div className="block group p-4">

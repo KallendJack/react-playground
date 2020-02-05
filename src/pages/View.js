@@ -3,15 +3,27 @@ import { Consumer } from '../context'
 
 class View extends Component {
   render() {
-    console.log(this.props)
     return (
       <Consumer>
         {({ posts }) => {
           const post = posts.filter(
-            post => post.id === this.props.match.params.id
+            post => post.id == this.props.match.params.id
           )
 
-          return <h1>{post.id}</h1>
+          return (
+            <div>
+              {post.length > 0 && (
+                <div className="flex items-center justify-center w-full py-8">
+                  <div className="overflow-hidden rounded max-w-xl w-full shadow-lg leading-normal">
+                    <div className="block group p-4">
+                      <p className="font-bold text-lg mb-1">{post[0].title}</p>
+                      <p className="mb-2">{post[0].body}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )
         }}
       </Consumer>
     )

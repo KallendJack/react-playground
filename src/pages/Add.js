@@ -4,8 +4,8 @@ import uuid from 'uuid'
 import axios from 'axios'
 
 const Add = props => {
-  const [title, setTitle] = useState()
-  const [body, setBody] = useState()
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
 
   const onChange = e => {
     e.target.name === 'title'

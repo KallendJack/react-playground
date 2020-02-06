@@ -11,7 +11,7 @@ class Add extends Component {
 
   onChange = e => this.setState({ [e.target.name]: e.target.value })
 
-  onSubmit = (dispatch, e) => {
+  onSubmit = async (dispatch, e) => {
     e.preventDefault()
 
     const { title, body } = this.state
@@ -21,12 +21,9 @@ class Add extends Component {
       body
     }
 
-    axios
-      .post(`https://jsonplaceholder.typicode.com/posts`, newPost)
-      .then(res => {
-        dispatch({ type: 'ADD_POST', payload: newPost })
-        this.props.history.push('/')
-      })
+    await axios.post(`https://jsonplaceholder.typicode.com/posts`, newPost)
+    dispatch({ type: 'ADD_POST', payload: newPost })
+    this.props.history.push('/')
   }
 
   render() {

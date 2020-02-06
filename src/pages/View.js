@@ -3,13 +3,10 @@ import { Consumer } from '../context'
 import axios from 'axios'
 
 const View = props => {
-  const onDeleteClick = (id, dispatch) => {
-    axios
-      .delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then(res => {
-        dispatch({ type: 'DELETE_POST', payload: id })
-        props.history.push('/')
-      })
+  const onDeleteClick = async (id, dispatch) => {
+    await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    dispatch({ type: 'DELETE_POST', payload: id })
+    props.history.push('/')
   }
 
   return (

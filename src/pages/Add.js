@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Consumer } from '../context'
 import uuid from 'uuid'
+import axios from 'axios'
 
 class Add extends Component {
   state = {
@@ -20,8 +21,12 @@ class Add extends Component {
       body
     }
 
-    dispatch({ type: 'ADD_POST', payload: newPost })
-    this.props.history.push('/')
+    axios
+      .post(`https://jsonplaceholder.typicode.com/posts`, newPost)
+      .then(res => {
+        dispatch({ type: 'ADD_POST', payload: newPost })
+        this.props.history.push('/')
+      })
   }
 
   render() {
@@ -36,7 +41,9 @@ class Add extends Component {
               className="max-w-md m-auto mt-12 p-5 shadow-lg"
             >
               <div className="py-5">
-                <label className="block font-bold text-lg mb-1">Title</label>
+                <label htmlFor="title" className="block font-bold text-lg mb-1">
+                  Title
+                </label>
                 <input
                   className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500"
                   type="text"
@@ -46,7 +53,9 @@ class Add extends Component {
                 />
               </div>
               <div>
-                <label className="block font-bold text-lg mb-1">Body</label>
+                <label htmlFor="body" className="block font-bold text-lg mb-1">
+                  Body
+                </label>
                 <textarea
                   className="mb-2 bg-gray-200 appearance-none border-2
             border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight

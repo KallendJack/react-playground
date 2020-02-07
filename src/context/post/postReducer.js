@@ -1,11 +1,29 @@
-import { GET_POSTS, ADD_POST, DELETE_POST } from '../types'
+import {
+  GET_POSTS,
+  GET_POST,
+  // ADD_POST,
+  // DELETE_POST,
+  SET_LOADING
+} from '../types'
 
 export default (state, action) => {
   switch (action.type) {
     case GET_POSTS:
       return {
         ...state,
-        posts: action.payload
+        posts: action.payload,
+        loading: false
+      }
+    case GET_POST:
+      return {
+        ...state,
+        post: action.payload,
+        loading: false
+      }
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true
       }
     default:
       return state

@@ -2,17 +2,27 @@ import React, { useReducer } from 'react'
 import axios from 'axios'
 import PostContext from './postContext'
 import PostReducer from './postReducer'
-import { GET_POSTS, ADD_POST, DELETE_POST } from '../types'
+import {
+  GET_POSTS,
+  GET_POST,
+  // ADD_POST,
+  // DELETE_POST,
+  SET_LOADING
+} from '../types'
 
 const PostState = props => {
   const initialState = {
-    posts: []
+    posts: [],
+    post: {},
+    loading: false
   }
 
   const [state, dispatch] = useReducer(PostReducer, initialState)
 
   // Get Posts
   const getPosts = async () => {
+    setLoading()
+
     const res = await axios.get(
       `https://jsonplaceholder.typicode.com/posts?_limit=5`
     )
@@ -23,8 +33,30 @@ const PostState = props => {
     })
   }
 
+  // Get Post
+  const getPost = async id => {
+    setLoading()
+
+    const res = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts/${id}`
+    )
+
+    dispatch({
+      type: GET_POST,
+      payload: res.data
+    })
+  }
+
+  //Set Loading
+  const setLoading = () =>
+    dispatch({
+      type: SET_LOADING
+    })
+
   return (
-    <PostContext.Provider value={{ state, getPosts }}>
+    <PostContext.Provider
+      value={{ posts: state.posts, post: state.post, getPosts, getPost }}
+    >
       {props.children}
     </PostContext.Provider>
   )

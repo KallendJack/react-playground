@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-// import { Provider } from './context'
 import PostState from './context/post/postState'
 import Header from './components/layout/Header'
 import Index from './pages/Index'

@@ -3,14 +3,21 @@ import PostContext from '../context/post/postContext'
 
 const View = props => {
   const postContext = useContext(PostContext)
-  const { post, loading, getPost } = postContext
+  const { post, loading, getPost, deletePost } = postContext
 
   useEffect(() => {
     getPost(props.match.params.id)
     // eslint-disable-next-line
   }, [])
 
-  const { title, body } = post
+  const { id, title, body } = post
+
+  const onDeleteClick = async e => {
+    e.preventDefault()
+
+    await deletePost(id)
+    props.history.push('/')
+  }
 
   if (loading) {
     return <h1>Loading</h1>
@@ -25,7 +32,10 @@ const View = props => {
               <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
                 Edit
               </button>
-              <button className="ml-3 bg-red-300 hover:bg-red-400 text-red-800 font-bold py-2 px-4 rounded-r">
+              <button
+                onClick={onDeleteClick}
+                className="ml-3 bg-red-300 hover:bg-red-400 text-red-800 font-bold py-2 px-4 rounded-r"
+              >
                 Delete
               </button>
             </div>

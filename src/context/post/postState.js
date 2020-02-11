@@ -5,8 +5,8 @@ import PostReducer from './postReducer'
 import {
   GET_POSTS,
   GET_POST,
-  // ADD_POST,
-  // DELETE_POST,
+  ADD_POST,
+  DELETE_POST,
   SET_LOADING
 } from '../types'
 
@@ -47,6 +47,26 @@ const PostState = props => {
     })
   }
 
+  // Add Post
+  const addPost = async newPost => {
+    await axios.post(`https://jsonplaceholder.typicode.com/posts`, newPost)
+
+    dispatch({
+      type: ADD_POST,
+      payload: newPost
+    })
+  }
+
+  // Delete Post
+  const deletePost = async id => {
+    await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+
+    dispatch({
+      type: DELETE_POST,
+      payload: id
+    })
+  }
+
   //Set Loading
   const setLoading = () =>
     dispatch({
@@ -55,7 +75,14 @@ const PostState = props => {
 
   return (
     <PostContext.Provider
-      value={{ posts: state.posts, post: state.post, getPosts, getPost }}
+      value={{
+        posts: state.posts,
+        post: state.post,
+        getPosts,
+        getPost,
+        addPost,
+        deletePost
+      }}
     >
       {props.children}
     </PostContext.Provider>

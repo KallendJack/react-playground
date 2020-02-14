@@ -23,9 +23,7 @@ const PostState = props => {
   const getPosts = async () => {
     setLoading()
 
-    const res = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts?_limit=5`
-    )
+    const res = await axios.get(`http://localhost:3000/posts`)
 
     dispatch({
       type: GET_POSTS,
@@ -37,9 +35,7 @@ const PostState = props => {
   const getPost = async id => {
     setLoading()
 
-    const res = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/${id}`
-    )
+    const res = await axios.get(`http://localhost:3000/posts/${id}`)
 
     dispatch({
       type: GET_POST,
@@ -49,7 +45,7 @@ const PostState = props => {
 
   // Add Post
   const addPost = async newPost => {
-    await axios.post(`https://jsonplaceholder.typicode.com/posts`, newPost)
+    await axios.post(`http://localhost:3000/posts`, newPost)
 
     dispatch({
       type: ADD_POST,
@@ -59,7 +55,7 @@ const PostState = props => {
 
   // Delete Post
   const deletePost = async id => {
-    await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    await axios.delete(`http://localhost:3000/posts/${id}`)
 
     dispatch({
       type: DELETE_POST,

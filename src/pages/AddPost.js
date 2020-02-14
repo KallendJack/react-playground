@@ -29,7 +29,7 @@ const Add = props => {
 
   return (
     <form onSubmit={onSubmit} className="max-w-md m-auto mt-12 p-5 shadow-lg">
-      <div className="py-5">
+      <div className="py-3">
         <label htmlFor="title" className="block font-bold text-lg mb-1">
           Title
         </label>
@@ -41,7 +41,7 @@ const Add = props => {
           onChange={onChange}
         />
       </div>
-      <div>
+      <div className="py-3">
         <label htmlFor="body" className="block font-bold text-lg mb-1">
           Body
         </label>

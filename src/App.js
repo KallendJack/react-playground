@@ -12,7 +12,7 @@ const App = () => {
       <Router>
         <Header />
         <Route exact path="/posts" component={Posts} />
-        <Route exact path="/post/add" component={AddPost} />
+        <Route exact path="/add" component={AddPost} />
         <Route exact path="/posts/:id" component={Post} />
       </Router>
     </PostState>

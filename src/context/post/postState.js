@@ -74,6 +74,7 @@ const PostState = props => {
       value={{
         posts: state.posts,
         post: state.post,
+        loading: state.loading,
         getPosts,
         getPost,
         addPost,

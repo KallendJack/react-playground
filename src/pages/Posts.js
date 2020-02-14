@@ -22,7 +22,7 @@ const Index = () => {
             <p className="mb-2">{body}</p>
             <div className="inline-flex">
               <Link
-                to={`/view/${id}`}
+                to={`/posts/${id}`}
                 id={id}
                 title={title}
                 body={body}

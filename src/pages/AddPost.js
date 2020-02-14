@@ -24,7 +24,7 @@ const Add = props => {
     }
 
     await addPost(newPost)
-    props.history.push('/')
+    props.history.push('/posts')
   }
 
   return (

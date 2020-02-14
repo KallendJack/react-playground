@@ -2,18 +2,18 @@ import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import PostState from './context/post/postState'
 import Header from './components/layout/Header'
-import Index from './pages/Index'
-import Add from './pages/Add'
-import View from './pages/View'
+import Posts from './pages/Posts'
+import AddPost from './pages/AddPost'
+import Post from './pages/Post'
 
 const App = () => {
   return (
     <PostState>
       <Router>
         <Header />
-        <Route exact path="/" component={Index} />
-        <Route exact path="/add" component={Add} />
-        <Route exact path="/view/:id" component={View} />
+        <Route exact path="/posts" component={Posts} />
+        <Route exact path="/post/add" component={AddPost} />
+        <Route exact path="/posts/:id" component={Post} />
       </Router>
     </PostState>
   )

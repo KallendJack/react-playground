@@ -16,7 +16,7 @@ const View = props => {
     e.preventDefault()
 
     await deletePost(id)
-    props.history.push('/')
+    props.history.push('/posts')
   }
 
   if (loading) {

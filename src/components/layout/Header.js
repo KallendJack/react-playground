@@ -39,10 +39,16 @@ const Header = () => {
             Home
           </Link>
           <Link
-            to="/add"
+            to="/posts"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
           >
-            Add
+            Posts
+          </Link>
+          <Link
+            to="/post/add"
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+          >
+            Add Post
           </Link>
         </div>
       </div>

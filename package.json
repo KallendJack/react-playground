@@ -27,7 +27,8 @@
     "eject": "react-scripts eject",
     "build:styles": "postcss src/css/tailwind.css -o src/css/app.css",
     "prebuild": "NODE_ENV=production yarn build:styles",
-    "prestart": "yarn build:styles"
+    "prestart": "yarn build:styles",
+    "deploy": "yarn build && aws s3 cp build/ s3://fem-aws.co.uk --recursive"
   },
   "eslintConfig": {
     "extends": "react-app"
